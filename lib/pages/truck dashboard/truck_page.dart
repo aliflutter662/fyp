@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/map/location_page.dart';
+import 'package:my_fyp/order/finished_order.dart';
 import 'package:my_fyp/order/show_order.dart';
 import 'package:my_fyp/pages/login.dart';
 import 'package:my_fyp/pages/user/profile.dart';
@@ -20,7 +21,7 @@ class _TabBottomState extends State<TabBottom>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -70,12 +71,7 @@ class _TabBottomState extends State<TabBottom>
           //     style: TextStyle(fontSize: 32),
           //   ),
           // ),
-          Center(
-            child: Text(
-              'Record',
-              style: TextStyle(fontSize: 32),
-            ),
-          ),
+
           Column(children: [
             Expanded(
               child: RatingPage(),
@@ -84,7 +80,8 @@ class _TabBottomState extends State<TabBottom>
               child: Profile(),
             ),
           ]),
-          Location(),
+          // Location(),
+          Text('user location')
         ],
       ),
       bottomNavigationBar: Container(
@@ -99,10 +96,6 @@ class _TabBottomState extends State<TabBottom>
             Tab(
               icon: Icon(Icons.home),
               text: 'Home',
-            ),
-            Tab(
-              icon: Icon(Icons.list),
-              text: 'Record',
             ),
             Tab(
               icon: Icon(Icons.person),
@@ -132,7 +125,7 @@ class _TopTabBarState extends State<TopTabBar>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 1, vsync: this);
   }
 
   @override
@@ -158,9 +151,6 @@ class _TopTabBarState extends State<TopTabBar>
               indicatorWeight: 5,
               tabs: [
                 Tab(
-                  text: 'delivering'.toUpperCase(),
-                ),
-                Tab(
                   text: 'finished'.toUpperCase(),
                 ),
               ]),
@@ -168,15 +158,7 @@ class _TopTabBarState extends State<TopTabBar>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
-          Orders(role: Roles.truck.name),
-          Center(
-            child: Text(
-              'Finished',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-        ],
+        children: [FinishedOrder(role: Roles.truck.name)],
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:my_fyp/Models/myenums.dart';
 // import 'package:flutter_fb_auth_emailpass/Models/myenums.dart';
 // import 'package:flutter_fb_auth_emailpass/order/show_order.dart';
@@ -8,17 +9,19 @@ import 'package:my_fyp/Models/myenums.dart';
 // import 'package:flutter_fb_auth_emailpass/pages/login.dart';
 // import 'package:flutter_fb_auth_emailpass/pages/truck%20dashboard/truck_page.dart';
 
-class AssignOrder extends StatefulWidget {
+class RateUser extends StatefulWidget {
   final String role;
-  final String documentId;
-  const AssignOrder({Key? key, required this.role, required this.documentId})
-      : super(key: key);
+  // final String documentId;
+  const RateUser({
+    Key? key,
+    required this.role,
+  }) : super(key: key);
 
   @override
-  _AssignOrderState createState() => _AssignOrderState();
+  _RateUserState createState() => _RateUserState();
 }
 
-class _AssignOrderState extends State<AssignOrder> {
+class _RateUserState extends State<RateUser> {
   TextEditingController _text = TextEditingController();
 
   // controller _text=text;
@@ -52,7 +55,7 @@ class _AssignOrderState extends State<AssignOrder> {
       }
       await FirebaseFirestore.instance
           .collection("orderlist")
-          .doc(widget.documentId)
+          .doc()
           .update({"role": rolee, "status": orderStatus});
       print("Firebase response");
     } catch (exception) {
@@ -68,26 +71,52 @@ class _AssignOrderState extends State<AssignOrder> {
   }
 
   String? dropdownValue;
-  final items = [
-    Roles.boss.name,
+  final pakcingitems = [Roles.cutting.name];
+  final cuttingItems = [
     Roles.supervisor.name,
     Roles.truck.name,
+    Roles.boss.name
   ];
-
   final bossItems = [
     Roles.workers.name,
     Roles.bathPeople.name,
   ];
+  final ranchItems = [
+    Roles.boss.name,
+  ];
+
+  final agentItems = [
+    Roles.boss.name,
+  ];
   String rolee = "";
   final _assignorderKey = GlobalKey<FormState>();
   var order = "";
+  double rating = 0;
+  List<DropdownMenuItem<String>> getItems() {
+    List<DropdownMenuItem<String>> items;
+
+    if (widget.role == Roles.packing.name) {
+      items = pakcingitems.map(buildMenuItem).toList();
+    } else if (widget.role == Roles.cutting.name) {
+      items = cuttingItems.map(buildMenuItem).toList();
+    } else if (widget.role == Roles.boss.name) {
+      items = bossItems.map(buildMenuItem).toList();
+    } else if (widget.role == Roles.ranchOwner.name) {
+      items = ranchItems.map(buildMenuItem).toList();
+    } else if (widget.role == Roles.agent.name) {
+      items = agentItems.map(buildMenuItem).toList();
+    } else {
+      items = pakcingitems.map(buildMenuItem).toList();
+    }
+    return items;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Assign Order'),
-      ),
+      // appBar: AppBar(
+      //   title: Text('Assign Order'),
+      // ),
       body: SafeArea(
         child: Form(
           key: _assignorderKey,
@@ -110,9 +139,7 @@ class _AssignOrderState extends State<AssignOrder> {
                     child: DropdownButton<String>(
                       value: dropdownValue,
                       // value: newValue,
-                      items: widget.role == Roles.cutting.name
-                          ? items.map(buildMenuItem).toList()
-                          : bossItems.map(buildMenuItem).toList(),
+                      items: getItems(),
                       dropdownColor: Colors.grey,
                       onChanged: (value) =>
                           setState(() => this.dropdownValue = value),
@@ -123,7 +150,23 @@ class _AssignOrderState extends State<AssignOrder> {
               SizedBox(
                 height: 20,
               ),
-
+              Text('Rating: $rating'),
+              RatingBar.builder(
+                minRating: 1,
+                itemSize: 46,
+                itemPadding: EdgeInsets.symmetric(horizontal: 4),
+                itemBuilder: (context, _) => Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
+                updateOnDrag: true,
+                onRatingUpdate: (rating) {
+                  setState(() {
+                    print(rating);
+                    this.rating = rating;
+                  });
+                },
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -135,27 +178,13 @@ class _AssignOrderState extends State<AssignOrder> {
                     ElevatedButton(
                       onPressed: () {
                         // Validate returns true if the form is valid, otherwise false.
-                        if (_assignorderKey.currentState!.validate()) {
-                          setState(() {
-                            rolee = dropdownValue!;
-                            Orderassigned(rolee);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                backgroundColor: Colors.black,
-                                content: Text(
-                                  "Order Assigned",
-                                  style: TextStyle(
-                                      fontSize: 18.0, color: Colors.white),
-                                ),
-                              ),
-                            );
-                            print(rolee);
-                          });
-                          // registration(confirmPassword, confirmRole, rolee);
-                        }
+                        rolee = dropdownValue!;
+                        FirebaseFirestore.instance
+                            .collection('ratings')
+                            .add({'rating': rating, 'role': rolee});
                       },
                       child: Text(
-                        'Assgin Order',
+                        'Rate',
                         style: TextStyle(fontSize: 18.0),
                       ),
                     ),

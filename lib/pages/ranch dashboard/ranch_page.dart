@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_fyp/Models/myenums.dart';
+import 'package:my_fyp/order/finished_order.dart';
 import 'package:my_fyp/pages/login.dart';
 import 'package:my_fyp/pages/user/profile.dart';
 import 'package:my_fyp/rating/Rating_page.dart';
+import 'package:my_fyp/showranches/rateusers/rate_other.dart';
 
 class RanchTabBottom extends StatefulWidget {
   const RanchTabBottom({Key? key}) : super(key: key);
@@ -17,7 +20,7 @@ class _RanchTabBottomState extends State<RanchTabBottom>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -66,23 +69,18 @@ class _RanchTabBottomState extends State<RanchTabBottom>
           //     style: TextStyle(fontSize: 32),
           //   ),
           // ),
-          Center(
-            child: Text(
-              'Order',
-              style: TextStyle(fontSize: 32),
-            ),
-          ),
+
           Column(children: [
             Expanded(
-              child: RatingPage(),
+              child: Text(''),
             ),
             Expanded(
               child: Profile(),
             ),
           ]),
-          Center(
-            child: Text('Rate boss and resend team'),
-          ),
+          RateUser(
+            role: Roles.ranchOwner.name,
+          )
         ],
       ),
       bottomNavigationBar: Container(
@@ -97,10 +95,6 @@ class _RanchTabBottomState extends State<RanchTabBottom>
             Tab(
               icon: Icon(Icons.home),
               text: 'Home',
-            ),
-            Tab(
-              icon: Icon(Icons.add_box),
-              text: 'Order',
             ),
             Tab(
               icon: Icon(Icons.person),
@@ -130,7 +124,7 @@ class _RanchTopTabBarState extends State<RanchTopTabBar>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 1, vsync: this);
   }
 
   @override
@@ -156,30 +150,14 @@ class _RanchTopTabBarState extends State<RanchTopTabBar>
               indicatorWeight: 5,
               tabs: [
                 Tab(
-                  text: 'pending'.toUpperCase(),
-                ),
-                Tab(
-                  text: 'delivered'.toUpperCase(),
+                  text: 'Completed jobs'.toUpperCase(),
                 ),
               ]),
         ),
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
-          Center(
-            child: Text(
-              'Pending',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Delivered',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-        ],
+        children: [FinishedOrder(role: Roles.packing.name)],
       ),
     );
   }

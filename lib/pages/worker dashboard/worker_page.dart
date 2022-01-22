@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/chat/chat_screen.dart';
+import 'package:my_fyp/order/finished_order.dart';
 import 'package:my_fyp/order/show_order.dart';
 import 'package:my_fyp/pages/login.dart';
 import 'package:my_fyp/pages/user/profile.dart';
@@ -20,7 +21,7 @@ class _WorkerTabBottomState extends State<WorkerTabBottom>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -70,7 +71,7 @@ class _WorkerTabBottomState extends State<WorkerTabBottom>
           //     style: TextStyle(fontSize: 32),
           //   ),
           // ),
-          Orders(role: Roles.workers.name),
+
           ChatScreen(),
           Column(children: [
             Expanded(
@@ -95,10 +96,7 @@ class _WorkerTabBottomState extends State<WorkerTabBottom>
               icon: Icon(Icons.home),
               text: 'Home',
             ),
-            Tab(
-              icon: Icon(Icons.add_box),
-              text: 'Order',
-            ),
+
             Tab(
               icon: Icon(Icons.chat),
               text: 'Chat',
@@ -131,7 +129,7 @@ class _WorkerTopTabBarState extends State<WorkerTopTabBar>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -160,9 +158,6 @@ class _WorkerTopTabBarState extends State<WorkerTopTabBar>
                   text: 'pending'.toUpperCase(),
                 ),
                 Tab(
-                  text: 'cancelled'.toUpperCase(),
-                ),
-                Tab(
                   text: 'finished'.toUpperCase(),
                 ),
               ]),
@@ -171,24 +166,8 @@ class _WorkerTopTabBarState extends State<WorkerTopTabBar>
       body: TabBarView(
         controller: _tabController,
         children: [
-          Center(
-            child: Text(
-              'Pending',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Cancelled',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Finished',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
+          Orders(role: Roles.workers.name),
+          FinishedOrder(role: Roles.workers.name)
         ],
       ),
     );

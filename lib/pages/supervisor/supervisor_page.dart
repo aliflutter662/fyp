@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/chat/chat_screen.dart';
+import 'package:my_fyp/order/finished_order.dart';
+import 'package:my_fyp/order/show_order.dart';
 import 'package:my_fyp/pages/login.dart';
 import 'package:my_fyp/pages/user/profile.dart';
 import 'package:my_fyp/rating/Rating_page.dart';
@@ -114,7 +117,7 @@ class _SupervisorTopBarState extends State<SupervisorTopBar>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 1, vsync: this);
   }
 
   @override
@@ -140,9 +143,6 @@ class _SupervisorTopBarState extends State<SupervisorTopBar>
               indicatorWeight: 5,
               tabs: [
                 Tab(
-                  text: 'pending'.toUpperCase(),
-                ),
-                Tab(
                   text: 'finished'.toUpperCase(),
                 ),
               ]),
@@ -151,18 +151,7 @@ class _SupervisorTopBarState extends State<SupervisorTopBar>
       body: TabBarView(
         controller: _tabController,
         children: [
-          Center(
-            child: Text(
-              'Delivered',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Finished',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
+          FinishedOrder(role: Roles.supervisor.name),
         ],
       ),
     );

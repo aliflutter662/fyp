@@ -1,16 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_fb_auth_emailpass/main.dart';
-// import 'package:flutter_fb_auth_emailpass/pages/login.dart';
-// import 'package:flutter_fb_auth_emailpass/pages/user/profile.dart';
-// import 'package:flutter_fb_auth_emailpass/rating/Rating_page.dart';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/main.dart';
+import 'package:my_fyp/order/finished_order.dart';
 import 'package:my_fyp/pages/login.dart';
 import 'package:my_fyp/pages/user/profile.dart';
 import 'package:my_fyp/rating/Rating_page.dart';
+import 'package:my_fyp/showranches/rateusers/rate_other.dart';
+import 'package:my_fyp/showranches/show_ranches.dart';
 
 class AgentTabBottom extends StatefulWidget {
   // const AgentTabBottom({Key? key}) : super(key: key);
@@ -71,7 +70,7 @@ class _AgentTabBottomState extends State<AgentTabBottom>
     // FirebaseMessaging.instance.getToken().then((token) {
     //   print('token :$token');
     // });
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -92,26 +91,26 @@ class _AgentTabBottomState extends State<AgentTabBottom>
               "History",
               style: TextStyle(color: Colors.black),
             ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  flutterLocalNotificationsPlugin.show(
-                      0,
-                      'Testing',
-                      'How you doing ?',
-                      NotificationDetails(
-                          android: AndroidNotificationDetails(
-                              channel.id, channel.name,
-                              channelDescription: 'hi',
-                              importance: Importance.high,
-                              color: Colors.blue,
-                              playSound: true,
-                              icon: '@mipmap/ic_launcher')));
-                });
-              },
-              child: Text('notify'),
-              style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     setState(() {
+            //       flutterLocalNotificationsPlugin.show(
+            //           0,
+            //           'Testing',
+            //           'How you doing ?',
+            //           NotificationDetails(
+            //               android: AndroidNotificationDetails(
+            //                   channel.id, channel.name,
+            //                   channelDescription: 'hi',
+            //                   importance: Importance.high,
+            //                   color: Colors.blue,
+            //                   playSound: true,
+            //                   icon: '@mipmap/ic_launcher')));
+            //     });
+            //   },
+            //   child: Text('notify'),
+            //   style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
+            // ),
             ElevatedButton(
               onPressed: () async => {
                 await FirebaseAuth.instance.signOut(),
@@ -135,20 +134,18 @@ class _AgentTabBottomState extends State<AgentTabBottom>
         // physics: NeverScrollableScrollPhysics(), // stop swipe scroll
         children: [
           AgentTopBar(),
-          Center(
-            child: Text(
-              'Ranches',
-              style: TextStyle(fontSize: 32),
-            ),
-          ),
+          ShowRanches(),
           Column(children: [
             Expanded(
-              child: RatingPage(),
+              child: Text(''),
             ),
             Expanded(
               child: Profile(),
             ),
           ]),
+          RateUser(
+            role: Roles.agent.name,
+          )
         ],
       ),
       bottomNavigationBar: Container(
@@ -172,6 +169,10 @@ class _AgentTabBottomState extends State<AgentTabBottom>
               icon: Icon(Icons.person),
               text: 'Profile',
             ),
+            Tab(
+              icon: Icon(Icons.star),
+              text: 'Rates',
+            ),
           ],
         ),
       ),
@@ -192,7 +193,7 @@ class _AgentTopBarState extends State<AgentTopBar>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 1, vsync: this);
   }
 
   @override
@@ -218,30 +219,14 @@ class _AgentTopBarState extends State<AgentTopBar>
               indicatorWeight: 5,
               tabs: [
                 Tab(
-                  text: 'pending'.toUpperCase(),
-                ),
-                Tab(
-                  text: 'finished'.toUpperCase(),
+                  text: 'All Jobs(completed,in progress,pending)'.toUpperCase(),
                 ),
               ]),
         ),
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
-          Center(
-            child: Text(
-              'Delivered',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Finished',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-        ],
+        children: [FinishedOrder(role: Roles.agent.name)],
       ),
     );
   }

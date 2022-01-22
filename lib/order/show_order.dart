@@ -109,12 +109,26 @@ class _OrdersState extends State<Orders> {
                               children: [
                                 ElevatedButton(
                                     onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => AssignOrder(
-                                                    role: widget.role,
-                                                  )));
+                                      if (widget.role ==
+                                              Roles.bathPeople.name ||
+                                          widget.role == Roles.workers.name) {
+                                        FirebaseFirestore.instance
+                                            .collection("orderlist")
+                                            .doc(document.id)
+                                            .update({
+                                          "role": widget.role,
+                                          "status": OrderStatus.delivered.name
+                                        });
+                                      } else {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AssignOrder(
+                                                      role: widget.role,
+                                                      documentId: document.id,
+                                                    )));
+                                      }
                                     },
                                     child: Text('accept'))
                               ],

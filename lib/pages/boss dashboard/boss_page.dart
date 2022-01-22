@@ -2,10 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/chat/chat_screen.dart';
+import 'package:my_fyp/order/cancel_order.dart';
+import 'package:my_fyp/order/finished_order.dart';
 import 'package:my_fyp/order/show_order.dart';
 import 'package:my_fyp/pages/login.dart';
 import 'package:my_fyp/pages/user/profile.dart';
 import 'package:my_fyp/rating/Rating_page.dart';
+import 'package:my_fyp/showranches/rateusers/rate_other.dart';
 
 class BossTabBottom extends StatefulWidget {
   const BossTabBottom({Key? key}) : super(key: key);
@@ -69,7 +72,7 @@ class _BossTabBottomState extends State<BossTabBottom>
           //     style: TextStyle(fontSize: 32),
           //   ),
           // ),
-          Orders(role: Roles.boss.name),
+
           ChatScreen(),
 
           Column(children: [
@@ -80,6 +83,9 @@ class _BossTabBottomState extends State<BossTabBottom>
               child: Profile(),
             ),
           ]),
+          RateUser(
+            role: Roles.boss.name,
+          )
         ],
       ),
       bottomNavigationBar: Container(
@@ -96,16 +102,16 @@ class _BossTabBottomState extends State<BossTabBottom>
               text: 'Home',
             ),
             Tab(
-              icon: Icon(Icons.add_box),
-              text: 'Order',
-            ),
-            Tab(
               icon: Icon(Icons.chat),
               text: 'Chat',
             ),
             Tab(
               icon: Icon(Icons.person),
               text: 'Profile',
+            ),
+            Tab(
+              icon: Icon(Icons.star),
+              text: 'Rates',
             ),
           ],
         ),
@@ -167,24 +173,9 @@ class _BossTopTabBarState extends State<BossTopTabBar>
       body: TabBarView(
         controller: _tabController,
         children: [
-          Center(
-            child: Text(
-              'Pending',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Cancelled',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Finished',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
+          Orders(role: Roles.boss.name),
+          CancelOrder(role: Roles.boss.name),
+          FinishedOrder(role: Roles.boss.name),
         ],
       ),
     );

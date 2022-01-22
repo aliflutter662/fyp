@@ -4,6 +4,7 @@ import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/order/cancel_order.dart';
 import 'package:my_fyp/order/finished_order.dart';
 import 'package:my_fyp/pages/login.dart';
+import 'package:my_fyp/showranches/rateusers/rate_other.dart';
 
 class PackingOrder extends StatefulWidget {
   const PackingOrder({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _PackingOrderState extends State<PackingOrder>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -77,25 +78,10 @@ class _PackingOrderState extends State<PackingOrder>
           //     style: TextStyle(fontSize: 32),
           //   ),
           // ),
-          Center(
-            child: Text(
-              'Order',
-              style: TextStyle(fontSize: 32),
-            ),
-          ),
 
-          Center(
-            child: Text(
-              'Panel',
-              style: TextStyle(fontSize: 32),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Rate',
-              style: TextStyle(fontSize: 32),
-            ),
-          ),
+          RateUser(
+            role: Roles.packing.name,
+          )
           // Column(children: [
           //   Expanded(
           //     child: RatingPage(),
@@ -120,16 +106,8 @@ class _PackingOrderState extends State<PackingOrder>
               text: 'Home',
             ),
             Tab(
-              icon: Icon(Icons.add_box),
-              text: 'Order',
-            ),
-            Tab(
-              icon: Icon(Icons.dashboard),
-              text: 'Panel',
-            ),
-            Tab(
               icon: Icon(Icons.star_border),
-              text: 'Rating',
+              text: 'Rates',
             ),
           ],
         ),

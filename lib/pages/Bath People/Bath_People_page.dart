@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/chat/chat_screen.dart';
+import 'package:my_fyp/order/finished_order.dart';
+import 'package:my_fyp/order/show_order.dart';
 import 'package:my_fyp/pages/login.dart';
 import 'package:my_fyp/pages/user/profile.dart';
 import 'package:my_fyp/rating/Rating_page.dart';
@@ -18,7 +21,7 @@ class _BathTabBottomState extends State<BathTabBottom>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -62,12 +65,6 @@ class _BathTabBottomState extends State<BathTabBottom>
         // physics: NeverScrollableScrollPhysics(), // stop swipe scroll
         children: [
           BathTopBar(),
-          Center(
-            child: Text(
-              'Order',
-              style: TextStyle(fontSize: 32),
-            ),
-          ),
           ChatScreen(),
           Column(children: [
             Expanded(
@@ -91,10 +88,6 @@ class _BathTabBottomState extends State<BathTabBottom>
             Tab(
               icon: Icon(Icons.home),
               text: 'Home',
-            ),
-            Tab(
-              icon: Icon(Icons.add_box),
-              text: 'Order',
             ),
             Tab(
               icon: Icon(Icons.chat),
@@ -124,7 +117,7 @@ class _BathTopBarState extends State<BathTopBar>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -153,9 +146,6 @@ class _BathTopBarState extends State<BathTopBar>
                   text: 'pending'.toUpperCase(),
                 ),
                 Tab(
-                  text: 'cancelled'.toUpperCase(),
-                ),
-                Tab(
                   text: 'finished'.toUpperCase(),
                 ),
               ]),
@@ -164,24 +154,8 @@ class _BathTopBarState extends State<BathTopBar>
       body: TabBarView(
         controller: _tabController,
         children: [
-          Center(
-            child: Text(
-              'Pending',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Cancelled',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Finished',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
+          Orders(role: Roles.bathPeople.name),
+          FinishedOrder(role: Roles.bathPeople.name)
         ],
       ),
     );
