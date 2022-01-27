@@ -74,14 +74,14 @@ class _TabBottomState extends State<TabBottom>
 
           Column(children: [
             Expanded(
-              child: RatingPage(),
+              child: RatingPage(role: Roles.truck.name),
             ),
             Expanded(
               child: Profile(),
             ),
           ]),
-          // Location(),
-          Text('user location')
+          Location(),
+          //Text('user location')
         ],
       ),
       bottomNavigationBar: Container(

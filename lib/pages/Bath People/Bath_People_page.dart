@@ -68,7 +68,9 @@ class _BathTabBottomState extends State<BathTabBottom>
           ChatScreen(),
           Column(children: [
             Expanded(
-              child: RatingPage(),
+              child: RatingPage(
+                role: Roles.bathPeople.name,
+              ),
             ),
             Expanded(
               child: Profile(),

@@ -40,12 +40,18 @@ dependencies:
   shared_preferences: ^2.0.11
   google_maps_flutter: ^2.1.1
   flutter_polyline_points: ^1.0.0
-  # location: ^4.3.0
-  
+
+  flutter_local_notifications: ^9.2.0
   permission_handler: ^8.3.0
   flutter_rating_bar: ^4.0.0
   firebase_messaging: ^11.2.5
-  flutter_local_notifications: ^9.2.0
+  plugin_platform_interface: ^2.0.0
+  firebase_messaging_platform_interface: ^3.1.5
+  geolocator_platform_interface: ^4.0.0
+  geolocator: '8.0.4'
+  location: ^4.3.0
+  
+
   get: ^4.5.1
 
 dev_dependencies:

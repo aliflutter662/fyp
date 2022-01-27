@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_fyp/Models/UserModel.dart';
+import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/order/order_page.dart';
 import 'package:my_fyp/pages/agent/add_agent.dart';
 import 'package:my_fyp/pages/cutting%20dashboard/add_cutting_comp.dart';
@@ -14,7 +16,45 @@ class PackingDashboard extends StatefulWidget {
   _PackingDashboardState createState() => _PackingDashboardState();
 }
 
+String cuttingCount = "";
+String bossCount = "";
+String supervisorCount = "";
+String truckCount = "";
+String agentCount = "";
+String ranchCount = "";
+
+// String getUserCount(String Role) {
+// return new UserModel().getUserNumber(Roles.cutting.name) as String;
+// }
+
 class _PackingDashboardState extends State<PackingDashboard> {
+  void getCounts() {
+    UserModel model = new UserModel();
+    model
+        .getUserNumber(Roles.cutting.name)
+        .then((value) => cuttingCount = value);
+
+    model.getUserNumber(Roles.boss.name).then((value) => bossCount = value);
+
+    model
+        .getUserNumber(Roles.ranchOwner.name)
+        .then((value) => ranchCount = value);
+
+    model.getUserNumber(Roles.agent.name).then((value) => agentCount = value);
+
+    model.getUserNumber(Roles.truck.name).then((value) => truckCount = value);
+
+    model
+        .getUserNumber(Roles.supervisor.name)
+        .then((value) => supervisorCount = value);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getCounts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +139,7 @@ class _PackingDashboardState extends State<PackingDashboard> {
                                         ),
                                         Center(
                                           child: Text(
-                                            '2 Items',
+                                            '',
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 12),
@@ -150,7 +190,7 @@ class _PackingDashboardState extends State<PackingDashboard> {
                                         ),
                                         Center(
                                           child: Text(
-                                            '2 Items',
+                                            '',
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 12),
@@ -208,7 +248,7 @@ class _PackingDashboardState extends State<PackingDashboard> {
                                         ),
                                         Center(
                                           child: Text(
-                                            '2 Items',
+                                            '',
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 12),

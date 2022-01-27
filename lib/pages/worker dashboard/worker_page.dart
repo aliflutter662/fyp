@@ -75,7 +75,7 @@ class _WorkerTabBottomState extends State<WorkerTabBottom>
           ChatScreen(),
           Column(children: [
             Expanded(
-              child: RatingPage(),
+              child: RatingPage(role: Roles.workers.name),
             ),
             Expanded(
               child: Profile(),

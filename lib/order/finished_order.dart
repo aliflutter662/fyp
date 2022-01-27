@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/chat/chat_screen.dart';
+import 'package:my_fyp/map/current_location_Page.dart';
 // import 'package:flutter_fb_auth_emailpass/Models/myenums.dart';
 // import 'package:flutter_fb_auth_emailpass/chat/chat_screen.dart';
 // import 'package:flutter_fb_auth_emailpass/order/assign_order.dart';
@@ -16,6 +17,7 @@ class FinishedOrder extends StatefulWidget {
 }
 
 class _FinishedOrderState extends State<FinishedOrder> {
+  
   @override
   Widget build(BuildContext context) {
     Stream<QuerySnapshot<Map<String, dynamic>>> quryStream;
@@ -114,7 +116,18 @@ class _FinishedOrderState extends State<FinishedOrder> {
                             SizedBox(
                               height: 10,
                             ),
-                            Text(data['status'])
+                            Visibility(
+                              visible: data["role"] == Roles.truck.name,
+                              child: IconButton(
+                                  onPressed: () async => {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CurrentLocation("user1"))),
+                                      },
+                                  icon: Icon(Icons.location_on)),
+                            )
                           ],
                           // title:
                           // subtitle: Text(data['user']),

@@ -77,7 +77,7 @@ class _BossTabBottomState extends State<BossTabBottom>
 
           Column(children: [
             Expanded(
-              child: RatingPage(),
+              child: RatingPage(role: Roles.boss.name),
             ),
             Expanded(
               child: Profile(),

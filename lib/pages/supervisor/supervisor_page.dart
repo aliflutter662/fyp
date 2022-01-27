@@ -68,7 +68,7 @@ class _SupervisorTabBottomState extends State<SupervisorTabBottom>
           ChatScreen(),
           Column(children: [
             Expanded(
-              child: RatingPage(),
+              child: RatingPage(role: Roles.supervisor.name),
             ),
             Expanded(
               child: Profile(),

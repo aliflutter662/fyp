@@ -5,6 +5,8 @@ import 'package:my_fyp/order/cancel_order.dart';
 import 'package:my_fyp/order/finished_order.dart';
 import 'package:my_fyp/order/show_order.dart';
 import 'package:my_fyp/pages/login.dart';
+import 'package:my_fyp/pages/user/profile.dart';
+import 'package:my_fyp/rating/Rating_page.dart';
 import 'package:my_fyp/showranches/rateusers/rate_other.dart';
 
 class BossOrder extends StatefulWidget {
@@ -20,7 +22,7 @@ class _BossOrderState extends State<BossOrder>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -77,18 +79,17 @@ class _BossOrderState extends State<BossOrder>
           //     style: TextStyle(fontSize: 32),
           //   ),
           // ),
-
+          Column(children: [
+            Expanded(
+              child: RatingPage(role: Roles.cutting.name),
+            ),
+            Expanded(
+              child: Profile(),
+            ),
+          ]),
           RateUser(
             role: Roles.cutting.name,
-          )
-          // Column(children: [
-          //   Expanded(
-          //     child: RatingPage(),
-          //   ),
-          //   Expanded(
-          //     child: Profile(),
-          //   ),
-          // ]),
+          ),
         ],
       ),
       bottomNavigationBar: Container(
@@ -103,6 +104,10 @@ class _BossOrderState extends State<BossOrder>
             Tab(
               icon: Icon(Icons.home),
               text: 'Home',
+            ),
+            Tab(
+              icon: Icon(Icons.person),
+              text: 'Profile',
             ),
             Tab(
               icon: Icon(Icons.star_border),

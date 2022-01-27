@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_fyp/Models/UserModel.dart';
+import 'package:my_fyp/Models/myenums.dart';
 import 'package:my_fyp/pages/boss%20dashboard/add_boss.dart';
 import 'package:my_fyp/pages/cutting%20dashboard/cutting_order_page.dart';
 import 'package:my_fyp/pages/login.dart';
@@ -14,6 +16,8 @@ class CuttingDashboard extends StatefulWidget {
 }
 
 class _CuttingDashboardState extends State<CuttingDashboard> {
+  UserModel model = new UserModel();
+  String bossCount = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,7 +106,7 @@ class _CuttingDashboardState extends State<CuttingDashboard> {
                                           ),
                                           Center(
                                             child: Text(
-                                              '2 Items',
+                                              "2 items",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 12),
