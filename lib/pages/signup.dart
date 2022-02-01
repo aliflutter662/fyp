@@ -135,180 +135,188 @@ class _SignupState extends State<Signup> {
       // ),
       body: Form(
         key: _formKey,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-          child: ListView(
-            children: [
-              SizedBox(
-                height: 140,
-              ),
-              Container(
-                // decoration: BoxDecoration(
-                //     // color: Colors.grey,
-                //     borderRadius: BorderRadius.circular(10)),
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  autofocus: false,
-                  keyboardType: TextInputType.name,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: 'Name: ',
-                    labelStyle: TextStyle(
-                      fontSize: 20.0,
-                    ),
-                    border: OutlineInputBorder(),
-                    errorStyle:
-                        TextStyle(color: Colors.redAccent, fontSize: 15),
-                  ),
-                  controller: confirmPasswordController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Name';
-                    }
-                    return null;
-                  },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30,
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  autofocus: false,
-                  keyboardType: TextInputType.name,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: 'Id',
-                    labelStyle: TextStyle(fontSize: 20.0),
-                    border: OutlineInputBorder(),
-                    errorStyle:
-                        TextStyle(color: Colors.redAccent, fontSize: 15),
-                  ),
-                  controller: confirmRoleController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Id';
-                    }
-                    return null;
-                  },
+                Center(
+                  child: Image.asset('images/fyp.jpeg'),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  autofocus: false,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: 'Email: ',
-                    labelStyle: TextStyle(fontSize: 20.0),
-                    border: OutlineInputBorder(),
-                    errorStyle:
-                        TextStyle(color: Colors.redAccent, fontSize: 15),
-                  ),
-                  controller: emailController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Email';
-                    } else if (!value.contains('@')) {
-                      return 'Please Enter Valid Email';
-                    }
-                    return null;
-                  },
+                SizedBox(
+                  height: 30,
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  autofocus: false,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password: ',
-                    labelStyle: TextStyle(fontSize: 20.0),
-                    border: OutlineInputBorder(),
-                    errorStyle:
-                        TextStyle(color: Colors.redAccent, fontSize: 15),
-                  ),
-                  controller: passwordController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Password';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Container(
-                width: 400,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.horizontal(),
-                  color: Colors.black12,
-                  // border: Border.all(color: Colors.deepOrange, width: 3)
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    value: dropdownValue,
-                    // value: newValue,
-                    // items: items.map(buildMenuItem).toList(),
-                    items: getUserRoleItemsForSingup(),
-                    dropdownColor: Colors.grey,
-                    onChanged: (value) =>
-                        setState(() => this.dropdownValue = value),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Validate returns true if the form is valid, otherwise false.
-                        if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            email = emailController.text;
-                            password = passwordController.text;
-                            confirmPassword = confirmPasswordController.text;
-                            confirmRole = confirmRoleController.text;
-                            rolee = dropdownValue!;
-                          });
-                          registration(confirmPassword, confirmRole, rolee);
-                        }
-                      },
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(fontSize: 18.0),
+                Container(
+                  // decoration: BoxDecoration(
+                  //     // color: Colors.grey,
+                  //     borderRadius: BorderRadius.circular(10)),
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  child: TextFormField(
+                    autofocus: false,
+                    keyboardType: TextInputType.name,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'Name: ',
+                      labelStyle: TextStyle(
+                        fontSize: 20.0,
                       ),
+                      border: OutlineInputBorder(),
+                      errorStyle:
+                          TextStyle(color: Colors.redAccent, fontSize: 15),
                     ),
-                  ],
+                    controller: confirmPasswordController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter Name';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Already have an Account? "),
-                    TextButton(
-                        onPressed: () => {
-                              Navigator.pushReplacement(
-                                context,
-                                PageRouteBuilder(
-                                  pageBuilder:
-                                      (context, animation1, animation2) =>
-                                          Login(),
-                                  transitionDuration: Duration(seconds: 0),
-                                ),
-                              )
-                            },
-                        child: Text('Login'))
-                  ],
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  child: TextFormField(
+                    autofocus: false,
+                    keyboardType: TextInputType.name,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'Id',
+                      labelStyle: TextStyle(fontSize: 20.0),
+                      border: OutlineInputBorder(),
+                      errorStyle:
+                          TextStyle(color: Colors.redAccent, fontSize: 15),
+                    ),
+                    controller: confirmRoleController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter Id';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
-              )
-            ],
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  child: TextFormField(
+                    autofocus: false,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      labelText: 'Email: ',
+                      labelStyle: TextStyle(fontSize: 20.0),
+                      border: OutlineInputBorder(),
+                      errorStyle:
+                          TextStyle(color: Colors.redAccent, fontSize: 15),
+                    ),
+                    controller: emailController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter Email';
+                      } else if (!value.contains('@')) {
+                        return 'Please Enter Valid Email';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  child: TextFormField(
+                    autofocus: false,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Password: ',
+                      labelStyle: TextStyle(fontSize: 20.0),
+                      border: OutlineInputBorder(),
+                      errorStyle:
+                          TextStyle(color: Colors.redAccent, fontSize: 15),
+                    ),
+                    controller: passwordController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter Password';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.black12,
+                    // border: Border.all(color: Colors.deepOrange, width: 3)
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: dropdownValue,
+                      // value: newValue,
+                      // items: items.map(buildMenuItem).toList(),
+                      items: getUserRoleItemsForSingup(),
+                      dropdownColor: Colors.grey,
+                      onChanged: (value) =>
+                          setState(() => this.dropdownValue = value),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          // Validate returns true if the form is valid, otherwise false.
+                          if (_formKey.currentState!.validate()) {
+                            setState(() {
+                              email = emailController.text;
+                              password = passwordController.text;
+                              confirmPassword = confirmPasswordController.text;
+                              confirmRole = confirmRoleController.text;
+                              rolee = dropdownValue!;
+                            });
+                            registration(confirmPassword, confirmRole, rolee);
+                          }
+                        },
+                        child: Text(
+                          'Sign Up',
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Already have an Account? "),
+                      TextButton(
+                          onPressed: () => {
+                                Navigator.pushReplacement(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder:
+                                        (context, animation1, animation2) =>
+                                            Login(),
+                                    transitionDuration: Duration(seconds: 0),
+                                  ),
+                                )
+                              },
+                          child: Text('Login'))
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

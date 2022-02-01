@@ -68,29 +68,6 @@ class _PackingDashboardState extends State<PackingDashboard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Padding(
-              //   padding: EdgeInsets.all(12),
-              //   child: Row(
-              //     children: [
-              //       Icon(
-              //         Icons.menu,
-              //         color: Colors.black,
-              //         size: 50,
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.all(18),
-              //   child: Text(
-              //     'Dashboard Options',
-              //     style: TextStyle(
-              //         color: Colors.black,
-              //         fontSize: 28,
-              //         fontWeight: FontWeight.bold),
-              //     textAlign: TextAlign.start,
-              //   ),
-              // ),
               Padding(
                   padding: EdgeInsets.only(
                     left: 12,
@@ -105,47 +82,44 @@ class _PackingDashboardState extends State<PackingDashboard> {
                             child: SizedBox(
                               width: 160,
                               height: 160,
-                              child: Card(
-                                color: Colors.orange,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          AddCutting()));
-                                            },
-                                            child: Text('Cutting Company',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold))),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Center(
-                                          child: Text(
-                                            '',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AddCutting()));
+                                },
+                                child: Card(
+                                  color: Colors.orange,
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
                                           ),
-                                        )
-                                      ],
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            AddCutting()));
+                                              },
+                                              child: Text('Cutting Company',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.bold))),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -156,145 +130,55 @@ class _PackingDashboardState extends State<PackingDashboard> {
                             child: SizedBox(
                               width: 160,
                               height: 160,
-                              child: Card(
-                                color: Colors.red,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          AddRanch()));
-                                            },
-                                            child: Text('Ranch Owner',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold))),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Center(
-                                          child: Text(
-                                            '',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AddRanch()));
+                                },
+                                child: Card(
+                                  color: Colors.red,
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
                                           ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: SizedBox(
-                              width: 160,
-                              height: 160,
-                              child: Card(
-                                color: Colors.blue,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          AddAgent()));
-                                            },
-                                            child: Text('Total Agents',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.bold))),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Center(
-                                          child: Text(
-                                            '',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12),
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            AddRanch()));
+                                              },
+                                              child: Text('Ranch Owner',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.bold))),
+                                          SizedBox(
+                                            height: 5,
                                           ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: SizedBox(
-                              width: 160,
-                              height: 160,
-                              child: Card(
-                                color: Colors.indigo,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text('Total Deliverables',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          '2 Items',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        )
-                                      ],
+                                          Center(
+                                            child: Text(
+                                              '',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 12),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -312,36 +196,55 @@ class _PackingDashboardState extends State<PackingDashboard> {
                             child: SizedBox(
                               width: 160,
                               height: 160,
-                              child: Card(
-                                color: Colors.green,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text('Order Finished',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          '2 Items',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        )
-                                      ],
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AddAgent()));
+                                },
+                                child: Card(
+                                  color: Colors.blue,
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            AddAgent()));
+                                              },
+                                              child: Text('Total Agents',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.bold))),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Center(
+                                            child: Text(
+                                              '',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 12),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -352,34 +255,36 @@ class _PackingDashboardState extends State<PackingDashboard> {
                             child: SizedBox(
                               width: 160,
                               height: 160,
-                              child: Card(
-                                color: Colors.purple,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text('Order in Progress',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          '2 Items',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        )
-                                      ],
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              PackingOrder()));
+                                },
+                                child: Card(
+                                  color: Colors.indigo,
+                                  elevation: 2,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text('Orders',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -388,141 +293,6 @@ class _PackingDashboardState extends State<PackingDashboard> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: SizedBox(
-                              width: 160,
-                              height: 160,
-                              child: Card(
-                                color: Colors.brown,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text('Pending Orders',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          '2 Items',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: SizedBox(
-                              width: 160,
-                              height: 160,
-                              child: Card(
-                                color: Colors.grey,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text('Order Accepted',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          '2 Items',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: SizedBox(
-                              width: 160,
-                              height: 160,
-                              child: Card(
-                                color: Colors.black54,
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text('Order Rejected',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          '2 Items',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(child: Container()),
-                        ],
-                      )
                     ],
                   ))
             ],

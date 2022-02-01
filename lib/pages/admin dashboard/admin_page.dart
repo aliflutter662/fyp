@@ -34,120 +34,94 @@ class _AdminDashboardState extends State<AdminDashboard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Padding(
-                //   padding: EdgeInsets.all(12),
-                //   child: Row(
-                //     children: [
-                //       Icon(
-                //         Icons.menu,
-                //         color: Colors.black,
-                //         size: 50,
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // Padding(
-                //   padding: EdgeInsets.all(18),
-                //   child: Text(
-                //     'Dashboard Options',
-                //     style: TextStyle(
-                //         color: Colors.black,
-                //         fontSize: 28,
-                //         fontWeight: FontWeight.bold),
-                //     textAlign: TextAlign.start,
-                //   ),
-                // ),
                 Row(
                   children: [
                     Expanded(
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.pink,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddPacking()));
-                                      },
-                                      child: Text('Packaging Company',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddPacking()));
+                          },
+                          child: Card(
+                            color: Colors.pink,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddPacking()));
+                                        },
+                                        child: Text('Packaging Company',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    // SizedBox(
-                    //   width: 10,
-                    // ),
                     Expanded(
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.orange,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddCutting()));
-                                      },
-                                      child: Text('Cutting Company',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddCutting()));
+                          },
+                          child: Card(
+                            color: Colors.orange,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddCutting()));
+                                        },
+                                        child: Text('Cutting Company',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -165,42 +139,42 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.red,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddRanch()));
-                                      },
-                                      child: Text('Ranch Owner',
-                                          style: TextStyle(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddRanch()));
+                          },
+                          child: Card(
+                            color: Colors.red,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddRanch()));
+                                        },
+                                        child: Text('Ranch Owner',
+                                            style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                                            )))
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -212,21 +186,28 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.blue,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddBoss()));
+                          },
+                          child: Card(
+                            color: Colors.blue,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -236,18 +217,12 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                       },
                                       child: Text('Boss',
                                           style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                                            color: Colors.white,
+                                            fontSize: 15,
+                                          )),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -265,42 +240,42 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.indigo,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddSupervisor()));
-                                      },
-                                      child: Text('Supervisor',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddSupervisor()));
+                          },
+                          child: Card(
+                            color: Colors.indigo,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddSupervisor()));
+                                        },
+                                        child: Text('Supervisor',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -312,42 +287,42 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.green,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddTruck()));
-                                      },
-                                      child: Text('Truck',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddTruck()));
+                          },
+                          child: Card(
+                            color: Colors.green,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddTruck()));
+                                        },
+                                        child: Text('Truck',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -365,41 +340,41 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.purple,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddAgent()));
-                                      },
-                                      child: Text('Agent',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddAgent()));
+                          },
+                          child: Card(
+                            color: Colors.purple,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddAgent()));
+                                        },
+                                        child: Text('Agent',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -411,42 +386,42 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.brown,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddWorker()));
-                                      },
-                                      child: Text('Worker',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddWorker()));
+                          },
+                          child: Card(
+                            color: Colors.brown,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddWorker()));
+                                        },
+                                        child: Text('Worker',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -464,42 +439,42 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       child: SizedBox(
                         width: 160,
                         height: 160,
-                        child: Card(
-                          color: Colors.grey,
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddBathPeople()));
-                                      },
-                                      child: Text('Bath People',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    '2 Items',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
-                                  )
-                                ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddBathPeople()));
+                          },
+                          child: Card(
+                            color: Colors.grey,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AddBathPeople()));
+                                        },
+                                        child: Text('Bath People',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold))),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -513,17 +488,6 @@ class _AdminDashboardState extends State<AdminDashboard> {
                     ))
                   ],
                 ),
-
-                // Padding(
-                //   padding: EdgeInsets.all(12),
-                //   child: Center(
-                //     child: Wrap(
-                //       spacing: 20,
-                //       runSpacing: 20,
-                //       children: [],
-                //     ),
-                //   ),
-                // )
               ],
             ),
           ),

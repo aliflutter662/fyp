@@ -84,7 +84,13 @@ class _LoginState extends State<Login> {
           child: ListView(
             children: [
               SizedBox(
-                height: 130,
+                height: 30,
+              ),
+              Center(
+                child: Image.asset('images/fyp.jpeg'),
+              ),
+              SizedBox(
+                height: 30,
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 10.0),

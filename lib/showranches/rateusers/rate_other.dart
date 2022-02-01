@@ -182,6 +182,11 @@ class _RateUserState extends State<RateUser> {
                         FirebaseFirestore.instance
                             .collection('ratings')
                             .add({'rating': rating, 'role': rolee});
+
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("User Rated Successfully"),
+                          duration: Duration(milliseconds: 500),
+                        ));
                       },
                       child: Text(
                         'Rate',

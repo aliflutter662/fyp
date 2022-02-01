@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:my_fyp/pages/login.dart';
+import 'package:my_fyp/splash/splash.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
               //   primarySwatch: Colors.deepPurple,
               // ),
               debugShowCheckedModeBanner: false,
-              home: Login());
+              home: SplashScreen());
         });
   }
 }
