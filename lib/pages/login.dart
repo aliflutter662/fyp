@@ -86,8 +86,11 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 30,
               ),
-              Center(
-                child: Image.asset('images/fyp.jpeg'),
+              Container(
+                height: 130,
+                child: Center(
+                  child: Image.asset('images/sufwan.jpeg'),
+                ),
               ),
               SizedBox(
                 height: 30,
@@ -140,47 +143,51 @@ class _LoginState extends State<Login> {
                 height: 30,
               ),
               Container(
-                margin: EdgeInsets.only(left: 60.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Validate returns true if the form is valid, otherwise false.
-                        if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            email = emailController.text;
-                            password = passwordController.text;
-                            // UserManagement().handleAuth();
-                            UserManagement()
-                                .authorizeAccess(context, email, password);
-                            // GestureDetector(
-                            //   onTap: () =>
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(200, 50),
+                          maximumSize: const Size(200, 50),
+                        ),
+                        onPressed: () {
+                          // Validate returns true if the form is valid, otherwise false.
+                          if (_formKey.currentState!.validate()) {
+                            setState(() {
+                              email = emailController.text;
+                              password = passwordController.text;
+                              // UserManagement().handleAuth();
+                              UserManagement()
+                                  .authorizeAccess(context, email, password);
+                              // GestureDetector(
+                              //   onTap: () =>
 
-                            // );
-                          });
-                          userLogin();
-                        }
-                      },
-                      child: Text(
-                        'Login',
-                        style: TextStyle(fontSize: 18.0),
+                              // );
+                            });
+                            userLogin();
+                          }
+                        },
+                        child: Text(
+                          'Login',
+                          style: TextStyle(fontSize: 18.0),
+                        ),
                       ),
                     ),
-                    TextButton(
-                      onPressed: () => {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ForgotPassword(),
-                          ),
-                        )
-                      },
-                      child: Text(
-                        'Forgot Password ?',
-                        style: TextStyle(fontSize: 14.0),
-                      ),
-                    ),
+                    // TextButton(
+                    //   onPressed: () => {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => ForgotPassword(),
+                    //       ),
+                    //     )
+                    //   },
+                    //   child: Text(
+                    //     'Forgot Password ?',
+                    //     style: TextStyle(fontSize: 14.0),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

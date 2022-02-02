@@ -168,32 +168,40 @@ class _RateUserState extends State<RateUser> {
                 },
               ),
               SizedBox(
-                height: 10,
+                height: 30,
               ),
               //Text('UId : $uid'),
               Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Validate returns true if the form is valid, otherwise false.
-                        rolee = dropdownValue!;
-                        FirebaseFirestore.instance
-                            .collection('ratings')
-                            .add({'rating': rating, 'role': rolee});
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 40, right: 40),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(200, 50),
+                            maximumSize: const Size(200, 50),
+                          ),
+                          onPressed: () {
+                            // Validate returns true if the form is valid, otherwise false.
+                            rolee = dropdownValue!;
+                            FirebaseFirestore.instance
+                                .collection('ratings')
+                                .add({'rating': rating, 'role': rolee});
 
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("User Rated Successfully"),
-                          duration: Duration(milliseconds: 500),
-                        ));
-                      },
-                      child: Text(
-                        'Rate',
-                        style: TextStyle(fontSize: 18.0),
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("User Rated Successfully"),
+                              duration: Duration(milliseconds: 500),
+                            ));
+                          },
+                          child: Text(
+                            'Rate',
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

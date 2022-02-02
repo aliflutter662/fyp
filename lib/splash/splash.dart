@@ -44,7 +44,7 @@ class SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -63,9 +63,9 @@ class SplashScreenState extends State<SplashScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Image.asset(
-                'images/fyp.jpeg',
-                width: animation.value * 360,
-                height: animation.value * 360,
+                'images/sufwan.jpeg',
+                width: animation.value * 150,
+                height: animation.value * 150,
               ),
             ],
           ),

@@ -143,8 +143,11 @@ class _SignupState extends State<Signup> {
                 SizedBox(
                   height: 30,
                 ),
-                Center(
-                  child: Image.asset('images/fyp.jpeg'),
+                Container(
+                  height: 130,
+                  child: Center(
+                    child: Image.asset('images/sufwan.jpeg'),
+                  ),
                 ),
                 SizedBox(
                   height: 30,
@@ -266,29 +269,35 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 50,
                 ),
                 Container(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          // Validate returns true if the form is valid, otherwise false.
-                          if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              email = emailController.text;
-                              password = passwordController.text;
-                              confirmPassword = confirmPasswordController.text;
-                              confirmRole = confirmRoleController.text;
-                              rolee = dropdownValue!;
-                            });
-                            registration(confirmPassword, confirmRole, rolee);
-                          }
-                        },
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(fontSize: 18.0),
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(200, 50),
+                            maximumSize: const Size(200, 50),
+                          ),
+                          onPressed: () {
+                            // Validate returns true if the form is valid, otherwise false.
+                            if (_formKey.currentState!.validate()) {
+                              setState(() {
+                                email = emailController.text;
+                                password = passwordController.text;
+                                confirmPassword =
+                                    confirmPasswordController.text;
+                                confirmRole = confirmRoleController.text;
+                                rolee = dropdownValue!;
+                              });
+                              registration(confirmPassword, confirmRole, rolee);
+                            }
+                          },
+                          child: Text(
+                            'Sign Up',
+                            style: TextStyle(fontSize: 18.0),
+                          ),
                         ),
                       ),
                     ],
